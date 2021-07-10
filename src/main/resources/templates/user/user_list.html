@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Spring MVC CRUD Case 2 : single business object, return type: response entity, consumed by template
+</h2><br>
+	<div th:switch="${userList}">
+		<h2 th:case="null">No users yet!</h2>
+		<div th:case="*">
+			<h2>Users</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Membership</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${userList}">
+						<td th:text="${user.userId}"></td>
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.age}"></td>
+						<td>
+						<span th:if="${user.membership}" th:style="'color:green'">yes</span>
+						<span th:unless="${user.membership}" th:style="'color:red'">no</span>
+						</td>
+						<td><a th:href="@{/user/edit/{id}(id=${user.userId})}">Edit</a></td>
+						<td><a th:href="@{/user/delete/{id}(id=${user.userId})}">Delete</a></td> 
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>
+			<a href="/user/signup">Add a new user</a>
+		</p>
+	</div>
+
+</body>
+</html>

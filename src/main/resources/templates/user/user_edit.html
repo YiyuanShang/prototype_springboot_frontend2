@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user/update}" th:object="${user}"
+		method="post">
+		<label for="userId">User Id</label>
+		<input type="number" th:field="*{userId}" id="userId" th:value="${user.userId}"><br> 
+		<label for="name">Name</label> <input type="text" th:field="*{name}"
+			id="name" th:value="${user.name}"><br> <label for="age">Age</label>
+		<input type="number" th:field="*{age}" id="age" th:value="${user.age}"><br> <label
+			for="membership">Membership</label> <input type="radio"
+			name="membership" value="true">yes <input type="radio"
+			name="membership" value="false">no <br> <input
+			type="submit" value="Update User">
+	</form>
+	
+	<span th:if="${errors}"  th:text="${errors}">Error</span>
+</body>
+</html>

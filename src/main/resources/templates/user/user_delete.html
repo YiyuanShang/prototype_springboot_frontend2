@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user/delete}" th:object="${user}"
+		method="post">
+		<label for="userId">User Id</label>
+		<input type="number" th:field="*{userId}" id="userId" th:value="${user.userId}" readonly><br> 
+		
+		<label for="name">Name</label>
+		<input type="text" th:field="*{name}"
+			id="name" th:value="${user.name}" readonly><br>
+			
+		<label for="age">Age</label>
+		<input type="number" th:field="*{age}" id="age" th:value="${user.age}" readonly><br>
+		
+		<label for="membership">Membership</label> 
+		<span th:if="${user.membership}">yes</span>
+		<span th:unless="${user.membership}">no</span><br> 
+		
+		<input type="submit" value="Delete User">
+	</form>
+
+</body>
+</html>
